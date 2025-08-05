@@ -3,7 +3,7 @@ import random
 import os
 import pandas as pd
 
-EXCEL_FILE = "croppable_area_ids17000.xlsx"
+EXCEL_FILE_NAME = "croppable_area_ids100.xlsx"
 SHEET_NAME = "croppable_area_ids"
 COLUMN_NAME = "croppable area ids"
 
@@ -32,7 +32,7 @@ def random_lat_long():
 
 # Helper to write CA IDs to Excel
 def append_ca_ids_to_excel(ca_ids):
-    file_path = r'C:\Users\rajasekhar.palleti\Downloads\\' + EXCEL_FILE
+    file_path = "/Users/rajasekhar/Desktop/ScriptOutputs/" + EXCEL_FILE_NAME
     if os.path.exists(file_path):
         df = pd.read_excel(file_path, sheet_name=SHEET_NAME)
     else:
