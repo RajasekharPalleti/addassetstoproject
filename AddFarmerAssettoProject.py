@@ -1,5 +1,4 @@
 import time
-import pandas as pd
 import requests
 
 from create_farmer import create_farmer
@@ -13,7 +12,7 @@ users = [296352]
 PROJECT_ID = 320052
 variety_id = 334502
 sowing_date = "2025-08-01T00:00:00.000Z"
-MAX_CA_IDS = 1000
+MAX_CA_IDS = 500
 BATCH_SIZE = 100
 TENANT_CODE = "qa"
 MOBILE = "7382212409"
@@ -53,7 +52,8 @@ def main():
                    "Content-Type": "application/json"
                    }
 
-        map_response = requests.post(map_url, headers=headers, json=asset_ids)
+        map_payload = asset_ids
+        map_response = requests.post(map_url, headers=headers, json=map_payload)
         map_response.raise_for_status()
         mapped_asset_ids = map_response.json().get("projectAssetIds", [])
 
