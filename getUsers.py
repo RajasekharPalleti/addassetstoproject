@@ -1,5 +1,4 @@
 import requests
-import json
 
 def get_users_data(token, user_ids):
     users_data = []

@@ -8,15 +8,15 @@ from getUsers import get_users_data
 from utils import append_ca_ids_to_excel
 
 # Constants
-users = [296352]
-PROJECT_ID = 320052
-variety_id = 334502
-sowing_date = "2025-08-01T00:00:00.000Z"
-MAX_CA_IDS = 500
+users = [1401]
+PROJECT_ID = 1501
+# variety_id = 334502
+# sowing_date = "2025-08-01T00:00:00.000Z"
+MAX_CA_IDS = 2500
 BATCH_SIZE = 100
-TENANT_CODE = "qa"
-MOBILE = "7382212409"
-PASSWORD = "123456"
+TENANT_CODE = "auxoaidriscolls"
+MOBILE = "9148981108"
+PASSWORD = "cropin@123"
 ENVIRONMENT = "prod1"
 
 
@@ -66,18 +66,18 @@ def main():
 
         print(f"✅ {len(ca_ids)} Croppable Area is assigned to project and IDs Gathered.")
 
-        #Adding variety and sowing date to CAs
-        bulk_url = "https://cloud.cropin.in/services/farm/api/croppable-areas/bulk"
-        bulk_payload = {"sowingDate":sowing_date,
-                        "croppableArea":None,
-                        "varietyId":variety_id,
-                        "ids":ca_ids
-                        }
-        print("⏳ Waiting for CA bulk update response...")
-        response_bulk = requests.put(bulk_url, headers=headers, json=bulk_payload)
-        response_bulk.raise_for_status()
-
-        print("🔁 Bulk update response:", response_bulk.json())
+        # #Adding variety and sowing date to CAs
+        # bulk_url = "https://cloud.cropin.in/services/farm/api/croppable-areas/bulk"
+        # bulk_payload = {"sowingDate":sowing_date,
+        #                 "croppableArea":None,
+        #                 "varietyId":variety_id,
+        #                 "ids":ca_ids
+        #                 }
+        # print("⏳ Waiting for CA bulk update response...")
+        # response_bulk = requests.put(bulk_url, headers=headers, json=bulk_payload)
+        # response_bulk.raise_for_status()
+        #
+        # print("🔁 Bulk update response:", response_bulk.json())
         time.sleep(3)
 
         total_ca_ids.extend(ca_ids)

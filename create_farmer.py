@@ -1,10 +1,7 @@
 import requests
 import json
-import time
-import random
-from datetime import datetime
-from getUsers import get_users_data 
-from utils import generate_timestamp_millis, generate_random_mobile 
+from utils import generate_timestamp_millis, generate_random_mobile, random_lat_long
+
 
 def create_farmer(token, assigned_users):
     url = "https://cloud.cropin.in/services/farm/api/farmers"
@@ -14,18 +11,19 @@ def create_farmer(token, assigned_users):
 
     timestamp = generate_timestamp_millis()
     mobile_number = generate_random_mobile()
+    lat, long = random_lat_long()
 
     payload = {
         "status": "DISABLE",
         "data": {
             "mobileNumber": mobile_number,
-            "countryCode": "+91",
-            "tags": [289201, 13251]
+            "countryCode": "+91"
+            # "tags": [289201, 13251]
         },
         "images": {},
         "declaredArea": {
             "enableConversion": "true",
-            "unit": "ACRE"
+            "unit": "HECTARE",
         },
         "firstName": f"Raja_Bulk_API_Farmer_{timestamp}",
         "farmerCode": timestamp,
@@ -43,8 +41,8 @@ def create_farmer(token, assigned_users):
             "landmark": "",
             "postalCode": "",
             "placeId": "ChIJ4b8AQvwUrjsRtShU44e_fpg",
-            "latitude": 12.9083215,
-            "longitude": 77.6050777
+            "latitude": lat,
+            "longitude": long
         },
         # "isGDPRCompliant": True
     }
