@@ -3,7 +3,7 @@ import random
 import os
 import pandas as pd
 
-EXCEL_FILE_NAME = "croppable_area_ids100.xlsx"
+EXCEL_FILE_NAME = "croppable_area_idsdriscolls.xlsx"
 SHEET_NAME = "croppable_area_ids"
 COLUMN_NAME = "croppable area ids"
 
@@ -20,10 +20,10 @@ def random_lat_long():
     countries = [
         {"lat_range": (8.0, 37.0), "long_range": (68.0, 97.0)},  # India
         {"lat_range": (24.0, 49.0), "long_range": (-125.0, -66.0)},  # USA
-        {"lat_range": (-35.0, 37.0), "long_range": (-17.0, 51.0)},  # Africa
+        # {"lat_range": (-35.0, 37.0), "long_range": (-17.0, 51.0)},  # Africa
         {"lat_range": (14.0, 33.0), "long_range": (-118.0, -86.0)},  # Mexico
-        {"lat_range": (51.3, 51.7), "long_range": (-0.5, 0.3)},  # London
-        {"lat_range": (36.0, 71.0), "long_range": (-10.0, 40.0)},  # Europe
+        # {"lat_range": (51.3, 51.7), "long_range": (-0.5, 0.3)},  # London
+        # {"lat_range": (36.0, 71.0), "long_range": (-10.0, 40.0)}  # Europe
     ]
     country = random.choice(countries)
     lat = round(random.uniform(*country["lat_range"]), 6)
@@ -32,7 +32,7 @@ def random_lat_long():
 
 # Helper to write CA IDs to Excel
 def append_ca_ids_to_excel(ca_ids):
-    file_path = "/Users/rajasekhar/Desktop/ScriptOutputs/" + EXCEL_FILE_NAME
+    file_path = r"C:\Users\rajasekhar.palleti\Downloads\\" + EXCEL_FILE_NAME
     if os.path.exists(file_path):
         df = pd.read_excel(file_path, sheet_name=SHEET_NAME)
     else:

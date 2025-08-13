@@ -1,7 +1,5 @@
 import requests
 import json
-from datetime import datetime
-import time
 from utils import generate_timestamp_millis
 from utils import random_lat_long
 
@@ -21,12 +19,12 @@ def create_asset(token, owner_id):
         "companyStatus": "ACTIVE",
         "declaredArea": {
             "enableConversion": "true",
-            "unit": "ACRE",
-            "count": 10
+            "unit": "HECTARE",
+            "count": 6
         },
         "auditedArea": {
             "enableConversion": "true",
-            "unit": "ACRE"
+            "unit": "HECTARE"
         },
         "name": f"Raja_Bulk_API_Asset_{timestamp}",
         "ownerId": owner_id,
@@ -34,13 +32,13 @@ def create_asset(token, owner_id):
             "id": 1059
         },
         "irrigationType": {
-            "id": 1107
+            "id": 1105
         },
         "address": {
-            "country": "India",
+            "country": "",
             "formattedAddress": "Default address name given by API",
             "administrativeAreaLevel1": "",
-            "locality": "Bengaluru",
+            "locality": "",
             "administrativeAreaLevel2": "",
             "sublocalityLevel1": "",
             "sublocalityLevel2": "",
