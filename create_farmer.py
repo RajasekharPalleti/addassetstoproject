@@ -44,7 +44,7 @@ def create_farmer(token, assigned_users):
             "latitude": lat,
             "longitude": long
         },
-        # "isGDPRCompliant": True
+        "isGDPRCompliant": True
     }
     # print(payload)
 
