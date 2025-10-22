@@ -1,7 +1,7 @@
 import requests
 import json
-from utils import generate_timestamp_millis
-from utils import random_lat_long
+from utils import generate_timestamp_millis, get_random_location
+from utils import get_address_from_latlng
 
 def create_asset(token, owner_id):
     url = "https://cloud.cropin.in/services/farm/api/assets"
@@ -10,8 +10,16 @@ def create_asset(token, owner_id):
     }
 
     timestamp = generate_timestamp_millis()
+    region = "india"
+    # region = "world"
 
-    lat, long = random_lat_long()
+    loc_details = get_random_location(region)
+    # place = loc_details["place"]
+    lat = loc_details["latitude"]
+    lng = loc_details["longitude"]
+
+    google_api_key = "AIzaSyAwy--7hbQ9x-_rFT2lCi52o0rF0JvbA7E"
+    address = get_address_from_latlng(lat, lng, api_key=google_api_key)
 
     payload = {
         "data": {},
@@ -20,11 +28,11 @@ def create_asset(token, owner_id):
         "declaredArea": {
             "enableConversion": "true",
             "unit": "HECTARE",
-            "count": 6
+            "count": 5
         },
         "auditedArea": {
             "enableConversion": "true",
-            "unit": "HECTARE"
+            "unit": "ACRE"
         },
         "name": f"Raja_Bulk_API_Asset_{timestamp}",
         "ownerId": owner_id,
@@ -32,24 +40,9 @@ def create_asset(token, owner_id):
             "id": 1059
         },
         "irrigationType": {
-            "id": 1105
+            "id": 1101
         },
-        "address": {
-            "country": "",
-            "formattedAddress": "Default address name given by API",
-            "administrativeAreaLevel1": "",
-            "locality": "",
-            "administrativeAreaLevel2": "",
-            "sublocalityLevel1": "",
-            "sublocalityLevel2": "",
-            "landmark": "",
-            "postalCode": "",
-            "houseNo": "",
-            "buildingName": "",
-            "placeId": "ChIJ4b8AQvwUrjsRtShU44e_fpg",
-            "latitude": lat,
-            "longitude": long
-        }
+        "address": address
     }
 
     multipart_data = {
